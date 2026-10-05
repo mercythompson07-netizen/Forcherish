@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For Cherish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --night: #2a1320;
+      --wine: #4a1530;
+      --rose: #f0b6c4;
+      --blush: #fbeef1;
+      --mauve: #c995a8;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--night); }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(232, 120, 155, 0.38), transparent 42%),
+        radial-gradient(circle at 88% 28%, rgba(190, 90, 135, 0.32), transparent 46%),
+        radial-gradient(circle at 50% 105%, rgba(255, 165, 175, 0.28), transparent 52%),
+        linear-gradient(160deg, var(--wine) 0%, var(--night) 100%);
+      background-attachment: fixed;
+      color: var(--blush);
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Drifting hearts */
+    #hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .heart {
+      position: absolute;
+      bottom: 0;
+      color: var(--rose);
+      opacity: 0;
+      animation: drift linear infinite;
+    }
+    @keyframes drift {
+      0%   { transform: translateY(10vh) rotate(-10deg); opacity: 0; }
+      15%  { opacity: 0.55; }
+      85%  { opacity: 0.4; }
+      100% { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 36rem;
+      margin: 0 auto;
+      padding: 3rem 1.1rem 4rem;
+      animation: arrive 2.4s ease-out both;
+    }
+
+    .letter {
+      padding: 2.4rem 1.7rem 2.2rem;
+      background: rgba(42, 19, 32, 0.55);
+      border: 1px solid rgba(240, 182, 196, 0.28);
+      border-radius: 22px;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 60px rgba(232, 120, 155, 0.18);
+    }
+
+    h1 {
+      margin: 0 0 1.6rem;
+      font-family: "Great Vibes", "Snell Roundhand", cursive;
+      font-weight: 400;
+      font-size: clamp(3.6rem, 19vw, 5.6rem);
+      line-height: 1.05;
+      color: var(--rose);
+      text-shadow: 0 0 24px rgba(240, 182, 196, 0.35);
+    }
+
+    p {
+      margin: 0 0 1.4rem;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .divider {
+      margin: 1.8rem 0 1.4rem;
+      text-align: center;
+      color: var(--mauve);
+      letter-spacing: 0.6em;
+      font-style: normal;
+      font-size: 0.9rem;
+    }
+
+    .closing {
+      margin: 0;
+      color: var(--mauve);
+    }
+
+    .name {
+      display: block;
+      margin-top: 0.1rem;
+      font-family: "Great Vibes", "Snell Roundhand", cursive;
+      font-style: normal;
+      font-size: 2.7rem;
+      line-height: 1.2;
+      color: var(--rose);
+    }
+
+    @keyframes arrive {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      main { animation: none; }
+      .heart { animation: none; opacity: 0.25; }
+    }
+  </style>
+</head>
+<body>
+  <div id="hearts" aria-hidden="true"></div>
+
+  <main>
+    <div class="letter">
+      <h1>Cherish,</h1>
+
+      <p>I cheated on you, and I'm so sorry. You didn't do anything to deserve it. It was my choice, and it was wrong.</p>
+
+      <p>You are kind, loving, and trusting, and I broke that trust. You are everything I want, and I put that at risk. I hate that I hurt you.</p>
+
+      <p>I'm not asking you to forgive me right away. You get to take all the time you need and decide what happens next. I just want you to know that I'm sorry, and that I will be honest with you from here on, whatever you decide.</p>
+
+      <p class="divider" aria-hidden="true">&#9829; &#9829; &#9829;</p>
+
+      <p class="closing">
+        Yours,
+        <span class="name">Micheal</span>
+      </p>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var box = document.getElementById("hearts");
+      for (var i = 0; i < 16; i++) {
+        var h = document.createElement("span");
+        h.className = "heart";
+        h.textContent = "\u2665";
+        h.style.left = Math.random() * 100 + "%";
+        h.style.fontSize = 10 + Math.random() * 18 + "px";
+        h.style.animationDuration = 14 + Math.random() * 14 + "s";
+        h.style.animationDelay = "-" + Math.random() * 24 + "s";
+        box.appendChild(h);
+      }
+    })();
+  </script>
+</body>
+</html>
